@@ -1,0 +1,17 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar'); %>
+
+<h1>Write your blog here:</h1>
+
+<form action="home/blogpost" class="new-post-form">
+    <label for="title"></label>
+    <input type="text" name="title" placeholder="title" class="blog-title">
+    <br>
+    <label for="blog-text"></label>
+    <textarea name="blog-text" id="" class="blog-text" cols="50" rows="30"></textarea>
+    <button class="create-post-btn"><a href="" >Post</a></button>
+</form>
+
+<a href="/posts" method="POST">Back to Home</a>
+
+<%- include('../partials/footer'); %>

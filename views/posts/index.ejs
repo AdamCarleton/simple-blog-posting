@@ -1,0 +1,22 @@
+<%- include('../partials/head') %>
+<%- include('../partials/navbar') %>
+
+<div class="main-container">
+    <h1>BLOG</h1>
+    <ul class="all-posts">
+        <% for(post of posts) { %>
+            <li>
+                <h2><%= post.title %></h2>
+                <p><%= post.content %></p>
+            </li>
+        <% } %>
+    </ul>
+
+    <form action="/newPost">
+        <button class="new-post-btn">+</button>
+    </form>
+    
+</div>
+
+
+<%- include('../partials/footer') %>
