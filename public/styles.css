@@ -1,6 +1,7 @@
 * {
     --red: #882020;
     --white: #fff;
+    --black: #000;
 }
 
 body {
@@ -91,4 +92,9 @@ li a {
 
 .create-post-btn:hover {
     cursor: pointer;
+}
+
+.full-post-link {
+    color: gray;
+    text-decoration: none;
 }
