@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
+import methodOverride from 'method-override';
 
 const app = express();
 const PORT = 3000;
@@ -8,6 +9,8 @@ const PORT = 3000;
 const __dirname = import.meta.dirname;
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.use(methodOverride('_method'));
 
 app.use(express.static('public'));
 app.use(express.json()); 
@@ -32,7 +35,6 @@ let posts = [
 
 // HOME PAGE
 app.get('/posts', (req, res) => {
-  console.log(posts[0].id);
   res.render('posts/index', { posts });
 });
 
@@ -54,16 +56,43 @@ app.get('/posts/:id', (req, res) => {
     const { id } = req.params;
     // console.log(req.params);
     const post = posts.find(p => p.id === id)
-    console.log(post);
+    // console.log(post);
     res.render('posts/singlePost', { post })
 })
 
+app.get('/posts/:id/edit', (req, res) => {
+    const { id } = req.params;
+    const post = posts.find(p => p.id === id);
+    res.render('posts/edit', { post });
+})
+
+app.patch('/posts/:id', (req, res) => {
+    const { id } = req.params;
+    const foundPost = posts.find(p => p.id === id);
+
+    //get new title from req.body
+    const newPostTitle = req.body.title;
+    foundPost.title = newPostTitle;
+
+    const newPostContent = req.body.content;
+    foundPost.content = newPostContent;
+
+    res.redirect('/posts');
+})
+
 app.get('/random', (req,res) => {
-  const { id, title, content } = req.params;
+    const { id, title, content } = req.params;
     const randIndex = Math.floor(Math.random() * posts.length);
     const randPost = posts[randIndex];
     // send user to a random post
     res.render('posts/singlePost', { post: randPost });
+})
+
+app.delete('posts/:id', (req, res) => {
+    const { id } = req.params;
+    console.log(id);
+    posts = posts.filter(p => p.id !== id);
+    res.redirect('/posts');
 })
 
 // Start the server
