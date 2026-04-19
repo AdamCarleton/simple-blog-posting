@@ -60,6 +60,15 @@ li a {
     cursor: pointer;
 }
 
+.full-post-link {
+    color: gray;
+    text-decoration: none;
+}
+
+.full-post-link:hover {
+    cursor: pointer;
+}
+
 /* NEW POST PAGE */
 .new-post-form {
     display: flex;
@@ -94,7 +103,25 @@ li a {
     cursor: pointer;
 }
 
-.full-post-link {
-    color: gray;
-    text-decoration: none;
+/* SINGLE PAGE */
+.options {
+    display: flex;
+}
+
+.option-btn {
+    color: var(--white);
+    width: 90px;
+    height: 40px;
+    margin: 20px;
+    border: none;
+    border-radius: 10px;
+}
+
+.option-btn:hover{
+    cursor: pointer;
+}
+
+.delete-btn {
+    background-color: var(--red);
+
 }
