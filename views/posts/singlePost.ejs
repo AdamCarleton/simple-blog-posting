@@ -1,19 +1,28 @@
 <%- include('../partials/head'); %>
 <%- include('../partials/navbar') %>
 
-<h1><%= post.title %></h1>
+<div class="single-post-container">
+    <div class="spacing"></div>
+    <div class="blog-content">
+        <h1 class="single-post-title"><%= post.title %></h1>
+        <p class="single-post-text"><%= post.content %></p>
 
-<p><%= post.content %></p>
+        <div class="options">
+            <form method="GET" action="/posts/<%=post.id%>/edit" >
+                <button class="update-btn option-btn">Update</button>
+            </form>
 
-<div class="options">
-    <form method="GET" action="/posts/<%=post.id%>/edit" >
-        <button class="update-btn option-btn">Update</button>
-    </form>
+            <form method="POST" action="/posts/<%= post.id %>?_method=DELETE">
+                <button class="delete-btn option-btn">Delete</button>
+            </form>
+        </div>
 
-    <form method="POST" action="/posts/<%= post.id %>?_method=DELETE">
-        <button class="delete-btn option-btn">Delete</button>
-    </form>
+    </div>
+    <div class="spacing"></div>
+    
 </div>
+
+
 
 
 
