@@ -2,7 +2,7 @@
 <%- include('../partials/navbar.ejs') %>
 
 <h1>EDIT PAGE</h1>
-<form action="/posts/<%=post.id%>?_method=PATCH" method="POST" class="new-post-form">
+<form action="/posts/<%= post.id %>?_method=PATCH" method="POST" class="new-post-form">
     <label for="title"></label>
     <input type="text" class="title" id="title" name="title" value="<%=post.title%>">
     <textarea name="content" id="" cols="30" rows="10"><%=post.content%></textarea>

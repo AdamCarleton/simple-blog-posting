@@ -85,15 +85,18 @@ app.get('/random', (req,res) => {
     const randIndex = Math.floor(Math.random() * posts.length);
     const randPost = posts[randIndex];
     // send user to a random post
+    if(posts.length === 0) {
+      res.send('No posts exist, please make a new post');
+    }
     res.render('posts/singlePost', { post: randPost });
 })
 
-app.delete('posts/:id', (req, res) => {
+app.delete('/posts/:id', (req, res) => {
     const { id } = req.params;
-    console.log(id);
     posts = posts.filter(p => p.id !== id);
     res.redirect('/posts');
 })
+
 
 // Start the server
 app.listen(PORT, () => {
