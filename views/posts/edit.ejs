@@ -1,12 +1,20 @@
 <%- include('../partials/head.ejs') %>
 <%- include('../partials/navbar.ejs') %>
 
-<h1>EDIT PAGE</h1>
-<form action="/posts/<%= post.id %>?_method=PATCH" method="POST" class="new-post-form">
-    <label for="title"></label>
-    <input type="text" class="title" id="title" name="title" value="<%=post.title%>">
-    <textarea name="content" id="" cols="30" rows="10"><%=post.content%></textarea>
-    <button>Save</button>
-</form>
+<div class="main-container">
+    <div class="spacing"></div>
+    <div class="edit-container">
+        <h1>EDIT PAGE</h1>
+        <form action="/posts/<%= post.id %>?_method=PATCH" method="POST" class="new-post-form">
+            <label for="title"></label>
+            <input type="text" class="blog-title" id="title" name="title" value="<%=post.title%>">
+            <textarea name="content" id="" cols="30" rows="10" class="blog-text"><%=post.content%></textarea>
+            <button class="edit-save-btn">Save</button>
+        </form>
+    </div>
+
+    <div class="spacing"></div>
+</div>
+
 
 <%- include('../partials/footer.ejs') %>
